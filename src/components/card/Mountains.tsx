@@ -4,7 +4,7 @@ import React from 'react';
 const Mountains = () => {
   return (
     <div className="absolute top-[122px] left-[67px] w-[128px] h-[57px]">
-      <div className="w-full h-full rounded-3xl"
+      <div className="w-full h-full rounded-[24px]"
            style={{
              background: `
                radial-gradient(25.7% 89.75% at 45.97% 69.09%, rgba(151, 71, 255, 0.2) 32.2%, rgba(123, 97, 255, 0) 100%),
