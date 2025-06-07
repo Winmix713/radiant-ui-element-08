@@ -32,7 +32,8 @@ const GlassButton = ({ className, onClick }: GlassButtonProps) => {
              `
            }}>
         
-        <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out"
+        {/* Enhanced hover overlay with blend modes */}
+        <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out blend-hard-light"
              style={{
                background: `
                  linear-gradient(154.18deg, rgba(255, 255, 255, 0) 29.02%, rgba(55, 16, 118, 0.324) 89.23%),
@@ -49,6 +50,9 @@ const GlassButton = ({ className, onClick }: GlassButtonProps) => {
                  inset 0px -28px 84px -24px rgba(226, 232, 255, 0.36)
                `
              }} />
+        
+        {/* Additional texture layer with color-burn blend mode */}
+        <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-30 transition-all duration-300 ease-out blend-color-burn texture-rotate" />
         
         <ArrowRight className="w-3 h-3 text-[#141C23] opacity-70 relative z-10 group-hover:text-white transition-colors duration-300" />
       </div>
