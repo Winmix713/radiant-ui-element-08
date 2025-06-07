@@ -4,6 +4,9 @@ import GlassCard from '@/components/templates/GlassCard';
 import MinimalistCard from '@/components/templates/MinimalistCard';
 import NatureCard from '@/components/templates/NatureCard';
 import AbstractCard from '@/components/templates/AbstractCard';
+import CreativeCard from '@/components/templates/CreativeCard';
+import InnovationCard from '@/components/templates/InnovationCard';
+import StrategyCard from '@/components/templates/StrategyCard';
 
 export const cardTemplates: CardTemplate[] = [
   {
@@ -20,6 +23,51 @@ export const cardTemplates: CardTemplate[] = [
       shadowDirection: 'center'
     },
     component: GlassCard
+  },
+  {
+    id: 'creative',
+    name: 'Creative Studio',
+    description: 'Purple-themed card for artistic projects',
+    thumbnail: '🎭',
+    defaultSettings: {
+      roundness: 24,
+      opacity: 1.0,
+      depth: 8,
+      backgroundBlur: 5,
+      color: '#8b5cf6',
+      shadowDirection: 'center'
+    },
+    component: CreativeCard
+  },
+  {
+    id: 'innovation',
+    name: 'Innovation Hub',
+    description: 'Golden-themed card for ideas and inspiration',
+    thumbnail: '💡',
+    defaultSettings: {
+      roundness: 24,
+      opacity: 1.0,
+      depth: 8,
+      backgroundBlur: 5,
+      color: '#f59e0b',
+      shadowDirection: 'center'
+    },
+    component: InnovationCard
+  },
+  {
+    id: 'strategy',
+    name: 'Strategy Board',
+    description: 'Green-themed card for strategic planning',
+    thumbnail: '🎯',
+    defaultSettings: {
+      roundness: 24,
+      opacity: 1.0,
+      depth: 8,
+      backgroundBlur: 5,
+      color: '#10b981',
+      shadowDirection: 'center'
+    },
+    component: StrategyCard
   },
   {
     id: 'minimalist',
