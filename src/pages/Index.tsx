@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ControlPanel from '@/components/ControlPanel';
@@ -9,12 +9,16 @@ import { CardSettings } from '@/types/templates';
 import { useCardSettings } from '@/hooks/useCardSettings';
 
 const Index = () => {
-  const {
-    selectedTemplateId,
-    cardSettings,
-    updateSettings,
-    updateTemplate
-  } = useCardSettings();
+  const [selectedTemplateId, setSelectedTemplateId] = useState<string>('glass');
+  const { settings, updateAllSettings } = useCardSettings();
+
+  const handleSettingsChange = (newSettings: CardSettings) => {
+    updateAllSettings(newSettings);
+  };
+
+  const handleTemplateChange = (templateId: string) => {
+    setSelectedTemplateId(templateId);
+  };
 
   const handleCardClick = () => {
     console.log('Card clicked - Template:', selectedTemplateId);
@@ -38,15 +42,15 @@ const Index = () => {
           {/* Control Panel */}
           <div className="w-full lg:w-auto flex-shrink-0">
             <ControlPanel 
-              onSettingsChange={updateSettings} 
-              onTemplateChange={updateTemplate}
+              onSettingsChange={handleSettingsChange} 
+              onTemplateChange={handleTemplateChange}
             />
           </div>
           
           {/* Card Preview */}
           <div className="w-full lg:w-auto flex justify-center lg:justify-start">
             <CustomizableGlassCard 
-              settings={cardSettings}
+              settings={settings}
               templateId={selectedTemplateId}
               onClick={handleCardClick}
             />
