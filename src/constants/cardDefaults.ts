@@ -7,20 +7,20 @@ export const CARD_DIMENSIONS = {
 export const DEFAULT_CARD_SETTINGS = {
   roundness: 24,
   opacity: 1.0,
-  depth: 8,
+  depth: 5,
   backgroundBlur: 5,
-  color: '#6654D3',
+  color: '#F1F2F5',
   shadowDirection: 'center' as const,
   centerImage: undefined,
   hover: {
     opacity: 1.0,
     backgroundBlur: 8,
-    color: '#8b5cf6',
-    shadowIntensity: 1.5,
+    color: '#6654D3',
+    shadowIntensity: 1.4,
   },
-  textColor: '#374151',
+  textColor: '#141C23',
   borderWidth: 1,
-  borderColor: 'rgba(226, 232, 255, 0.2)',
+  borderColor: '#E2E8FF',
 } as const;
 
 export const SLIDER_CONFIGS = {

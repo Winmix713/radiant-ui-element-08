@@ -2,16 +2,25 @@
 import React from 'react';
 import { CardSettings } from '@/types/templates';
 import { generateBaseCardStyle } from '@/utils/cardStyles';
+import { getHoverShadowByDirection } from '@/utils/shadowCalculations';
 
 interface CardContainerProps {
   settings: CardSettings;
   children: React.ReactNode;
   background: string;
+  hoverBackground?: string;
   className?: string;
   onClick?: () => void;
 }
 
-const CardContainer = ({ settings, children, background, className = '', onClick }: CardContainerProps) => {
+const CardContainer = ({ 
+  settings, 
+  children, 
+  background, 
+  hoverBackground,
+  className = '', 
+  onClick 
+}: CardContainerProps) => {
   const baseStyle = generateBaseCardStyle(settings);
   
   const cardStyle = {
@@ -24,8 +33,9 @@ const CardContainer = ({ settings, children, background, className = '', onClick
   const hoverStyle = {
     opacity: settings.hover.opacity,
     backdropFilter: `blur(${settings.hover.backgroundBlur}px)`,
-    background: settings.hover.color,
-    boxShadow: `0 ${settings.depth * settings.hover.shadowIntensity}px ${settings.depth * 2 * settings.hover.shadowIntensity}px rgba(0, 0, 0, 0.1)`,
+    background: hoverBackground || settings.hover.color,
+    boxShadow: getHoverShadowByDirection(settings),
+    borderColor: '#CCC4FF',
   };
 
   return (

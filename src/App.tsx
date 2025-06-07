@@ -14,8 +14,18 @@ const App = () => {
     opacity: 1.0,
     depth: 8,
     backgroundBlur: 5,
-    color: '#6654D3',
-    shadowDirection: 'center'
+    color: '#F1F2F5',
+    shadowDirection: 'center',
+    centerImage: undefined,
+    hover: {
+      opacity: 1.0,
+      backgroundBlur: 8,
+      color: '#6654D3',
+      shadowIntensity: 1.5,
+    },
+    textColor: '#141C23',
+    borderWidth: 1,
+    borderColor: '#E2E8FF',
   });
 
   const handleCardClick = () => {

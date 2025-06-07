@@ -5,6 +5,7 @@ import SettingsAccordion from './settings/SettingsAccordion';
 import CSSExporter from './settings/CSSExporter';
 import { CardSettings } from '@/types/templates';
 import { getTemplateById } from '@/lib/templates';
+import { DEFAULT_CARD_SETTINGS } from '@/constants/cardDefaults';
 
 interface ControlPanelProps {
   onSettingsChange: (settings: CardSettings) => void;
@@ -13,24 +14,7 @@ interface ControlPanelProps {
 
 const ControlPanel = ({ onSettingsChange, onTemplateChange }: ControlPanelProps) => {
   const [selectedTemplateId, setSelectedTemplateId] = React.useState<string>('glass');
-  const [settings, setSettings] = React.useState<CardSettings>({
-    roundness: 24,
-    opacity: 1.0,
-    depth: 8,
-    backgroundBlur: 5,
-    color: '#6654D3',
-    shadowDirection: 'center',
-    centerImage: undefined,
-    hover: {
-      opacity: 1.0,
-      backgroundBlur: 8,
-      color: '#8b5cf6',
-      shadowIntensity: 1.5,
-    },
-    textColor: '#374151',
-    borderWidth: 1,
-    borderColor: 'rgba(226, 232, 255, 0.2)',
-  });
+  const [settings, setSettings] = React.useState<CardSettings>(DEFAULT_CARD_SETTINGS);
 
   const updateSetting = (key: keyof CardSettings, value: any) => {
     const newSettings = { ...settings, [key]: value };
