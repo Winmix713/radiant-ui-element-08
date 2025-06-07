@@ -1,29 +1,23 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ControlPanel from '@/components/ControlPanel';
 import CustomizableGlassCard from '@/components/CustomizableGlassCard';
 import { Toaster } from '@/components/ui/toaster';
 import { CardSettings } from '@/types/templates';
+import { useCardSettings } from '@/hooks/useCardSettings';
 
 const Index = () => {
-  const [selectedTemplateId, setSelectedTemplateId] = useState<string>('glass');
-  const [cardSettings, setCardSettings] = useState<CardSettings>({
-    roundness: 24,
-    opacity: 1.0,
-    depth: 8,
-    backgroundBlur: 5,
-    color: '#6654D3',
-    shadowDirection: 'center'
-  });
+  const {
+    selectedTemplateId,
+    cardSettings,
+    updateSettings,
+    updateTemplate
+  } = useCardSettings();
 
-  const handleSettingsChange = (newSettings: CardSettings) => {
-    setCardSettings(newSettings);
-  };
-
-  const handleTemplateChange = (templateId: string) => {
-    setSelectedTemplateId(templateId);
+  const handleCardClick = () => {
+    console.log('Card clicked - Template:', selectedTemplateId);
   };
 
   return (
@@ -44,8 +38,8 @@ const Index = () => {
           {/* Control Panel */}
           <div className="w-full lg:w-auto flex-shrink-0">
             <ControlPanel 
-              onSettingsChange={handleSettingsChange} 
-              onTemplateChange={handleTemplateChange}
+              onSettingsChange={updateSettings} 
+              onTemplateChange={updateTemplate}
             />
           </div>
           
@@ -54,7 +48,7 @@ const Index = () => {
             <CustomizableGlassCard 
               settings={cardSettings}
               templateId={selectedTemplateId}
-              onClick={() => console.log('Card clicked')}
+              onClick={handleCardClick}
             />
           </div>
         </div>
