@@ -8,6 +8,13 @@ import CreativeCard from '@/components/templates/CreativeCard';
 import InnovationCard from '@/components/templates/InnovationCard';
 import StrategyCard from '@/components/templates/StrategyCard';
 
+const defaultHoverSettings = {
+  opacity: 1.0,
+  backgroundBlur: 8,
+  color: '#8b5cf6',
+  shadowIntensity: 1.5,
+};
+
 export const cardTemplates: CardTemplate[] = [
   {
     id: 'glass',
@@ -20,7 +27,12 @@ export const cardTemplates: CardTemplate[] = [
       depth: 8,
       backgroundBlur: 5,
       color: '#6654D3',
-      shadowDirection: 'center'
+      shadowDirection: 'center',
+      centerImage: undefined,
+      hover: defaultHoverSettings,
+      textColor: '#374151',
+      borderWidth: 1,
+      borderColor: 'rgba(226, 232, 255, 0.2)',
     },
     component: GlassCard
   },
@@ -35,7 +47,12 @@ export const cardTemplates: CardTemplate[] = [
       depth: 8,
       backgroundBlur: 5,
       color: '#8b5cf6',
-      shadowDirection: 'center'
+      shadowDirection: 'center',
+      centerImage: undefined,
+      hover: { ...defaultHoverSettings, color: '#a855f7' },
+      textColor: '#374151',
+      borderWidth: 1,
+      borderColor: 'rgba(226, 232, 255, 0.2)',
     },
     component: CreativeCard
   },
@@ -50,7 +67,12 @@ export const cardTemplates: CardTemplate[] = [
       depth: 8,
       backgroundBlur: 5,
       color: '#f59e0b',
-      shadowDirection: 'center'
+      shadowDirection: 'center',
+      centerImage: undefined,
+      hover: { ...defaultHoverSettings, color: '#fbbf24' },
+      textColor: '#374151',
+      borderWidth: 1,
+      borderColor: 'rgba(226, 232, 255, 0.2)',
     },
     component: InnovationCard
   },
@@ -65,7 +87,12 @@ export const cardTemplates: CardTemplate[] = [
       depth: 8,
       backgroundBlur: 5,
       color: '#10b981',
-      shadowDirection: 'center'
+      shadowDirection: 'center',
+      centerImage: undefined,
+      hover: { ...defaultHoverSettings, color: '#34d399' },
+      textColor: '#374151',
+      borderWidth: 1,
+      borderColor: 'rgba(226, 232, 255, 0.2)',
     },
     component: StrategyCard
   },
@@ -80,7 +107,12 @@ export const cardTemplates: CardTemplate[] = [
       depth: 6,
       backgroundBlur: 8,
       color: '#64748b',
-      shadowDirection: 'center'
+      shadowDirection: 'center',
+      centerImage: undefined,
+      hover: defaultHoverSettings,
+      textColor: '#374151',
+      borderWidth: 1,
+      borderColor: 'rgba(226, 232, 255, 0.2)',
     },
     component: MinimalistCard
   },
@@ -95,7 +127,12 @@ export const cardTemplates: CardTemplate[] = [
       depth: 10,
       backgroundBlur: 4,
       color: '#059669',
-      shadowDirection: 'down'
+      shadowDirection: 'down',
+      centerImage: undefined,
+      hover: { ...defaultHoverSettings, color: '#10b981' },
+      textColor: '#374151',
+      borderWidth: 1,
+      borderColor: 'rgba(226, 232, 255, 0.2)',
     },
     component: NatureCard
   },
@@ -110,7 +147,12 @@ export const cardTemplates: CardTemplate[] = [
       depth: 12,
       backgroundBlur: 6,
       color: '#7c3aed',
-      shadowDirection: 'center'
+      shadowDirection: 'center',
+      centerImage: undefined,
+      hover: { ...defaultHoverSettings, color: '#8b5cf6' },
+      textColor: '#374151',
+      borderWidth: 1,
+      borderColor: 'rgba(226, 232, 255, 0.2)',
     },
     component: AbstractCard
   }

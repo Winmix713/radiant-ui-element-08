@@ -4,12 +4,13 @@ import React from 'react';
 interface ColorPickerProps {
   value: string;
   onChange: (color: string) => void;
+  label?: string;
 }
 
-const ColorPicker = ({ value, onChange }: ColorPickerProps) => {
+const ColorPicker = ({ value, onChange, label = "Color" }: ColorPickerProps) => {
   return (
     <div className="space-y-2">
-      <label className="text-sm font-medium text-gray-700">Color</label>
+      <label className="text-sm font-medium text-gray-700">{label}</label>
       <div className="flex items-center space-x-2">
         <input
           type="color"

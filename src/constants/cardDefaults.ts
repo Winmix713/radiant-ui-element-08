@@ -11,6 +11,16 @@ export const DEFAULT_CARD_SETTINGS = {
   backgroundBlur: 5,
   color: '#6654D3',
   shadowDirection: 'center' as const,
+  centerImage: undefined,
+  hover: {
+    opacity: 1.0,
+    backgroundBlur: 8,
+    color: '#8b5cf6',
+    shadowIntensity: 1.5,
+  },
+  textColor: '#374151',
+  borderWidth: 1,
+  borderColor: 'rgba(226, 232, 255, 0.2)',
 } as const;
 
 export const SLIDER_CONFIGS = {

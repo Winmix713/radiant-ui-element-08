@@ -1,12 +1,9 @@
 
 import React from 'react';
 import TemplatePicker from './TemplatePicker';
-import SettingsSlider from './settings/SettingsSlider';
-import ColorPicker from './settings/ColorPicker';
-import ShadowDirectionPicker from './settings/ShadowDirectionPicker';
+import SettingsAccordion from './settings/SettingsAccordion';
 import CSSExporter from './settings/CSSExporter';
 import { CardSettings } from '@/types/templates';
-import { SLIDER_CONFIGS } from '@/constants/cardDefaults';
 import { getTemplateById } from '@/lib/templates';
 
 interface ControlPanelProps {
@@ -22,7 +19,17 @@ const ControlPanel = ({ onSettingsChange, onTemplateChange }: ControlPanelProps)
     depth: 8,
     backgroundBlur: 5,
     color: '#6654D3',
-    shadowDirection: 'center'
+    shadowDirection: 'center',
+    centerImage: undefined,
+    hover: {
+      opacity: 1.0,
+      backgroundBlur: 8,
+      color: '#8b5cf6',
+      shadowIntensity: 1.5,
+    },
+    textColor: '#374151',
+    borderWidth: 1,
+    borderColor: 'rgba(226, 232, 255, 0.2)',
   });
 
   const updateSetting = (key: keyof CardSettings, value: any) => {
@@ -42,7 +49,7 @@ const ControlPanel = ({ onSettingsChange, onTemplateChange }: ControlPanelProps)
   };
 
   return (
-    <div className="w-80 p-6 bg-white/80 backdrop-blur-lg border border-white/20 rounded-2xl shadow-xl">
+    <div className="w-80 p-6 bg-white/80 backdrop-blur-lg border border-white/20 rounded-2xl shadow-xl max-h-screen overflow-y-auto">
       {/* Header */}
       <div className="mb-6">
         <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-1">
@@ -58,42 +65,9 @@ const ControlPanel = ({ onSettingsChange, onTemplateChange }: ControlPanelProps)
           onTemplateChange={handleTemplateChange}
         />
 
-        <SettingsSlider
-          label="Roundness"
-          value={settings.roundness}
-          {...SLIDER_CONFIGS.roundness}
-          onChange={(value) => updateSetting('roundness', value)}
-        />
-
-        <SettingsSlider
-          label="Opacity"
-          value={settings.opacity}
-          {...SLIDER_CONFIGS.opacity}
-          onChange={(value) => updateSetting('opacity', value)}
-        />
-
-        <SettingsSlider
-          label="Depth"
-          value={settings.depth}
-          {...SLIDER_CONFIGS.depth}
-          onChange={(value) => updateSetting('depth', value)}
-        />
-
-        <SettingsSlider
-          label="Background blur"
-          value={settings.backgroundBlur}
-          {...SLIDER_CONFIGS.backgroundBlur}
-          onChange={(value) => updateSetting('backgroundBlur', value)}
-        />
-
-        <ColorPicker
-          value={settings.color}
-          onChange={(value) => updateSetting('color', value)}
-        />
-
-        <ShadowDirectionPicker
-          value={settings.shadowDirection}
-          onChange={(value) => updateSetting('shadowDirection', value)}
+        <SettingsAccordion 
+          settings={settings}
+          updateSetting={updateSetting}
         />
 
         <CSSExporter settings={settings} />
