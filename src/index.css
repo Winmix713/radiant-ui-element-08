@@ -194,11 +194,21 @@
   }
 
   .card-text {
-    color: var(--card-text-color);
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    position: absolute;
+    width: 138px;
+    height: 32px;
+    left: 20px;
+    top: 218px;
+    
+    font-family: 'Aktiv Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+    font-style: normal;
     font-weight: 600;
     font-size: 18px;
-    line-height: 90%;
+    line-height: 16px; /* or 90% */
+    display: flex;
+    align-items: center;
+    
+    color: #141C23;
     transition: color 0.3s ease-out;
   }
 
