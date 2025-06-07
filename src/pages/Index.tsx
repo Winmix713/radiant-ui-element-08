@@ -3,17 +3,10 @@ import React, { useState } from 'react';
 import ControlPanel from '@/components/ControlPanel';
 import CustomizableGlassCard from '@/components/CustomizableGlassCard';
 import { Toaster } from '@/components/ui/toaster';
-
-interface CardSettings {
-  roundness: number;
-  opacity: number;
-  depth: number;
-  backgroundBlur: number;
-  color: string;
-  shadowDirection: 'up' | 'down' | 'center';
-}
+import { CardSettings } from '@/types/templates';
 
 const Index = () => {
+  const [selectedTemplateId, setSelectedTemplateId] = useState<string>('glass');
   const [cardSettings, setCardSettings] = useState<CardSettings>({
     roundness: 24,
     opacity: 1.0,
@@ -27,19 +20,27 @@ const Index = () => {
     setCardSettings(newSettings);
   };
 
+  const handleTemplateChange = (templateId: string) => {
+    setSelectedTemplateId(templateId);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="container mx-auto px-8 py-12">
         <div className="flex flex-col lg:flex-row gap-12 items-start justify-center">
           {/* Control Panel */}
           <div className="w-full lg:w-auto flex-shrink-0">
-            <ControlPanel onSettingsChange={handleSettingsChange} />
+            <ControlPanel 
+              onSettingsChange={handleSettingsChange} 
+              onTemplateChange={handleTemplateChange}
+            />
           </div>
           
           {/* Card Preview */}
           <div className="w-full lg:w-auto flex justify-center lg:justify-start">
             <CustomizableGlassCard 
               settings={cardSettings}
+              templateId={selectedTemplateId}
               onClick={() => console.log('Card clicked')}
             />
           </div>

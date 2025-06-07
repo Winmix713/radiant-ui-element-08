@@ -1,26 +1,21 @@
-
 import React, { useState } from 'react';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { ArrowUp, ArrowDown, Move } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import TemplatePicker from './TemplatePicker';
+import { CardSettings } from '@/types/templates';
+import { getTemplateById } from '@/lib/templates';
 
 interface ControlPanelProps {
   onSettingsChange: (settings: CardSettings) => void;
+  onTemplateChange: (templateId: string) => void;
 }
 
-interface CardSettings {
-  roundness: number;
-  opacity: number;
-  depth: number;
-  backgroundBlur: number;
-  color: string;
-  shadowDirection: 'up' | 'down' | 'center';
-}
-
-const ControlPanel = ({ onSettingsChange }: ControlPanelProps) => {
+const ControlPanel = ({ onSettingsChange, onTemplateChange }: ControlPanelProps) => {
   const { toast } = useToast();
   
+  const [selectedTemplateId, setSelectedTemplateId] = useState<string>('glass');
   const [settings, setSettings] = useState<CardSettings>({
     roundness: 24,
     opacity: 1.0,
@@ -34,6 +29,16 @@ const ControlPanel = ({ onSettingsChange }: ControlPanelProps) => {
     const newSettings = { ...settings, [key]: value };
     setSettings(newSettings);
     onSettingsChange(newSettings);
+  };
+
+  const handleTemplateChange = (templateId: string) => {
+    const template = getTemplateById(templateId);
+    if (template) {
+      setSelectedTemplateId(templateId);
+      setSettings(template.defaultSettings);
+      onTemplateChange(templateId);
+      onSettingsChange(template.defaultSettings);
+    }
   };
 
   const generateCSS = () => {
@@ -95,6 +100,12 @@ const ControlPanel = ({ onSettingsChange }: ControlPanelProps) => {
 
       {/* Settings */}
       <div className="space-y-6">
+        {/* Template Picker */}
+        <TemplatePicker 
+          selectedTemplateId={selectedTemplateId}
+          onTemplateChange={handleTemplateChange}
+        />
+
         {/* Roundness */}
         <div className="space-y-2">
           <div className="flex justify-between items-center">
