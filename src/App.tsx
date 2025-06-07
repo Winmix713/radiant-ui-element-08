@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const App = () => {
   const handleCardClick = () => {
@@ -8,7 +9,18 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 p-8">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 p-8">
+      {/* Navigation */}
+      <div className="absolute top-8 left-8">
+        <Link 
+          to="/" 
+          className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm hover:bg-white/90 transition-all"
+        >
+          <ArrowRight className="w-4 h-4 rotate-180" />
+          Back to Editor
+        </Link>
+      </div>
+
       {/* Glass Card Container */}
       <div className="group cursor-pointer relative w-[236px] h-[273px] glass-card overflow-hidden mx-auto"
            onClick={handleCardClick}>
@@ -304,6 +316,12 @@ const App = () => {
             <ArrowRight className="w-3 h-3 text-[#141C23] opacity-70 relative z-10 group-hover:text-white transition-colors duration-300" />
           </div>
         </div>
+      </div>
+
+      {/* Demo Label */}
+      <div className="mt-8 text-center">
+        <h1 className="text-2xl font-bold text-gray-800 mb-2">Glass Card Demo</h1>
+        <p className="text-gray-600">This is a static preview of the glass card design</p>
       </div>
     </div>
   );
