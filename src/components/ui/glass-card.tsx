@@ -12,15 +12,15 @@ const GlassCard = ({ children, className, onClick }: GlassCardProps) => {
   return (
     <div 
       className={cn(
-        "group cursor-pointer",
+        "group cursor-pointer relative",
+        "w-[236px] h-[273px]",
+        "glass-card overflow-hidden",
         className
       )}
       onClick={onClick}
     >
-      <div className="relative w-full h-full glass-card overflow-hidden">
-        <div className="glass-card-hover-overlay" />
-        {children}
-      </div>
+      <div className="glass-card-hover-overlay" />
+      {children}
     </div>
   );
 };

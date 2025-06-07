@@ -11,7 +11,7 @@ interface CreateImageCardProps {
 const CreateImageCard = ({ onClick }: CreateImageCardProps) => {
   return (
     <GlassCard 
-      className="relative mx-auto"
+      className="relative mx-auto w-[236px] h-[273px]"
       onClick={onClick}
     >
       <CardContent />
